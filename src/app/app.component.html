@@ -1,65 +1,71 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Bienvenido</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Bienvenido</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#" routerLink="/productos">Productos<span class="sr-only">(current)</span></a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" routerLink="/productos">Productos<span class="sr-only">(current)</span></a>
+                </li>
 
-        </ul>
+            </ul>
+        </div>
+    </nav>
+    <div style="border: 1px solid red">
+        <router-outlet></router-outlet>
     </div>
-</nav>
-<div style="border: 1px solid red">
-    <router-outlet></router-outlet>
-</div>
 
-<div class="container">
-    <h1>Administración de artículos</h1>
-    <table class="table" border="1" *ngIf="hayRegistros(); else sinproductos">
-        <thead class="thead-dark">
-            <tr>
-                <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Borrar</th>
-                <th>Seleccionar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let producto of lista">
-                <td>{{producto.codigo}}</td>
-                <td>{{producto.descripcion}}</td>
-                <td>{{producto.precio}}</td>
-                <td><button type="button" class="btn btn-danger" (click)="eliminar(producto.codigo)">Borrar?</button></td>
-                <td><button type="button" class="btn btn-warning" (click)="mostrar(producto.codigo)">Seleccionar</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <ng-template #sinproductos>
-        <p>No hay productos</p>
-    </ng-template>
 
-    <div>
-        <h1>Datos</h1>
-        <div class="form-group">
-            <p>
-                Descripcion:<input class="form-control" type="text" [(ngModel)]="prod.descripcion" />
-            </p>
+    <div class="container">
+        <h1>Administración de artículos</h1>
+        <table class="table" border="1" *ngIf="hayRegistros(); else sinproductos">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Borrar</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of lista">
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td><button type="button" class="btn btn-danger" (click)="eliminar(producto.codigo)">Borrar?</button></td>
+                    <td><button type="button" class="btn btn-warning" (click)="mostrar(producto.codigo)">Seleccionar</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #sinproductos>
+            <p>No hay productos</p>
+        </ng-template>
+
+        <div>
+            <h1>Datos</h1>
+            <div class="form-group">
+                <p>
+                    Descripcion:<input class="form-control" type="text" [(ngModel)]="prod.descripcion" />
+                </p>
+            </div>
+            <div class="form-group">
+                <p>
+                    Precio:<input class="form-control" type="number" [(ngModel)]="prod.precio" />
+                </p>
+            </div>
+
+            <div class="text-center">
+
+                <p><button class="" type="button" class="btn btn-success" (click)="nuevo()">Agregar</button>
+                    <button type="button" class="btn btn-primary" (click)="actualizar()">Modificar</button></p>
+            </div>
         </div>
-        <div class="form-group">
-            <p>
-                Precio:<input class="form-control" type="number" [(ngModel)]="prod.precio" />
-            </p>
-        </div>
 
-        <div class="text-center">
-
-            <p><button class="" type="button" class="btn btn-success" (click)="nuevo()">Agregar</button>
-                <button type="button" class="btn btn-primary" (click)="actualizar()">Modificar</button></p>
-        </div>
     </div>
+
 
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductosService } from './services/productos.service';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'angularApp11';
-
   lista=null;
   prod = {
     codigo:null,
@@ -37,8 +37,8 @@ export class AppComponent {
     });
   }
 
-  eliminar(codigo: any) {
-  	if(!confirm("Esta seguro que desea eliminar este producto?"))
+  eliminar(codigo:any) {
+  	if(!confirm("Esta seguro que desea eliminar este registro?"))
   		return;
     this.productosServicio.eliminar(codigo).subscribe(result => {
       if (result=='ok') {
@@ -56,12 +56,13 @@ export class AppComponent {
     });    
   }
   
-  mostrar(codigo: any) {
+  mostrar(codigo:any) {
     this.productosServicio.mostrar(codigo).subscribe(result => {
       this.prod = result
     });
   }
 
+  
   hayRegistros() {
     return true;
   }
@@ -72,4 +73,6 @@ export class AppComponent {
       precio:null
     };
   }
+
+
 }
