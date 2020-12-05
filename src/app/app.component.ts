@@ -55,13 +55,12 @@ export class AppComponent {
       }
     });    
   }
-  
+
   mostrar(codigo:any) {
     this.productosServicio.mostrar(codigo).subscribe(result => {
       this.prod = result
     });
   }
-
   
   hayRegistros() {
     return true;
